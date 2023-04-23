@@ -4,7 +4,7 @@ Kingdom of Loathing item farming script, geese included!
 Usage: `gooso {turns}, {item}`
 
 # What will gooso do?
-¯\_(ツ)_/¯
+¯\\_(ツ)\_/¯
 
 # Anything required from me?
  - Obtain a [Grey Gosling](https://kol.coldfront.net/thekolwiki/index.php/Grey_gosling)
