@@ -180,9 +180,10 @@ string combat(int round, monster mon_encountered, string text) {
     abort("Monster not the farm monster nor monster wanted to banish");
   }
 
-  // Kill monster by attacking. Assuming we are sufficiently over leveled
+  
+
   print("We're all set! Laying out drones and attacking!", "orange");
-  return "if hasskill emit matter duplicating drones; skill emit matter duplicating drones; endif; attack";
+  return "if hasskill emit matter duplicating drones; skill emit matter duplicating drones; endif; skill stuffed mortar shell; use porquoise-handled sixgun;";
 }
 
 /// ///
@@ -254,7 +255,7 @@ boolean buff_up_item(int amount_to_buff, int turns_to_buff){
 
     print(`INFO: Buffing up shadow waters {shadow_water_buff_turns} times!`, "orange");
 
-    for shadow_water_effect_procs from 1 to shadow_water_buff_turns{
+    for shadow_water_effect_procs from 0 to shadow_water_buff_turns{
   
       visit_url("inv_use.php?which=3&whichitem=11169&pwd"); 
       run_choice(3); 
@@ -480,6 +481,14 @@ while(turns > 1){
   }
 
   adv1(farm_location, 1, "combat");
+
+  if(have_effect($effect[Beaten Up]).to_boolean()){
+    abort("We got beaten up! Try moving some ML?");
+  }
+
+  if(my_maxhp() * 0.3 < my_hp()){
+    restore_hp(my_maxhp());
+  }
 
   if(equipped_amount($item[cursed monkey's paw]).to_boolean()){
   
