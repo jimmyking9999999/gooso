@@ -155,9 +155,9 @@ string combat(int round, monster mon_encountered, string text) {
   if(mon_encountered == farm_monster) {
     print(`We hit a {mon_encountered}!`, "teal");
     // add more copies here kekw
-    if(get_property("olfactedMonster").to_monster() != mon_encountered && get_property("_olfactionsUsed") > 0){
+    if(get_property("olfactedMonster").to_monster() != mon_encountered && have_skill($skill[Transcendent Olfaction]) && get_property("_olfactionsUsed") != 3){
       print("Olfacting!", "orange");
-      return "skill Transcendent Olfaction; skill Gallapagosian Mating Call; attack";
+      return "if hasskill Transcendent Olfaction; skill Transcendent Olfaction; endif; if hasskill Gallapagosian Mating Call; skill Gallapagosian Mating Call; endif; attack";
     }
     
   } else if (banish_monsters.to_string().contains_text(mon_encountered)){
