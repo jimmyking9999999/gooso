@@ -155,7 +155,7 @@ string combat(int round, monster mon_encountered, string text) {
   if(mon_encountered == farm_monster) {
     print(`We hit a {mon_encountered}!`, "teal");
     // add more copies here kekw
-    if(get_property("olfactedMonster").to_monster() != mon_encountered && get_property("_olfactionsUsed") < 3){
+    if(get_property("olfactedMonster").to_monster() != mon_encountered && get_property("_olfactionsUsed") > 0){
       print("Olfacting!", "orange");
       return "skill Transcendent Olfaction; skill Gallapagosian Mating Call; attack";
     }
@@ -254,6 +254,8 @@ boolean buff_up_item(int amount_to_buff, int turns_to_buff){
     }
 
     print(`INFO: Buffing up shadow waters {shadow_water_buff_turns} times!`, "orange");
+
+    set_property("choiceAdventure1500", "2");
 
     for shadow_water_effect_procs from 0 to shadow_water_buff_turns{
   
@@ -486,7 +488,7 @@ while(turns > 1){
     abort("We got beaten up! Try moving some ML?");
   }
 
-  if(my_maxhp() * 0.3 < my_hp()){
+  if((my_maxhp() * 0.3) > my_hp()){
     restore_hp(my_maxhp());
   }
 
