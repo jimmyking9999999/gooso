@@ -1,6 +1,8 @@
 # Gooso
 Kingdom of Loathing item farming script, geese included!
 
+Installation: ```git checkout https://github.com/jimmyking9999999/gooso.git main```
+
 Usage: `gooso {turns}, {item}`
 
 ## What will gooso do?
