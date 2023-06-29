@@ -157,6 +157,7 @@ string combat(int round, monster mon_encountered, string text) {
     // add more copies here kekw
     if(get_property("olfactedMonster").to_monster() != mon_encountered && have_skill($skill[Transcendent Olfaction]) && get_property("_olfactionsUsed") != 3){
       print("Olfacting!", "orange");
+      set_property("olfactedMonster", mon_encountered);
       return "if hasskill Transcendent Olfaction; skill Transcendent Olfaction; endif; if hasskill Gallapagosian Mating Call; skill Gallapagosian Mating Call; endif; attack";
     }
     
@@ -249,13 +250,11 @@ boolean buff_up_item(int amount_to_buff, int turns_to_buff){
       abort("Finish your rufus quest!");
     }
 
-    if(shadow_water_buff_turns < 0){
-      shadow_water_buff_turns = 0;
-    }
-
     print(`INFO: Buffing up shadow waters {shadow_water_buff_turns} times!`, "orange");
 
     set_property("choiceAdventure1500", "2");
+
+    if(shadow_water_buff_turns > 0){
 
     for shadow_water_effect_procs from 0 to shadow_water_buff_turns{
   
@@ -268,6 +267,8 @@ boolean buff_up_item(int amount_to_buff, int turns_to_buff){
       if(item_amount($item[Rufus's shadow lodestone]) > 0){ 
         adv1($location[Shadow Rift (The Right Side of the Tracks)], -1, "abort"); 
       } 
+    }
+    
     }
   }
 
@@ -397,7 +398,7 @@ if(!have_effect($effect[Curiosity of Br\'er Tarrypin]).to_boolean()){
 // TODO: Filter out gooseable objects
 
 //if(can_goose){
-maximize(`333 familiar experience 10 min 10 max, 0.01 meat, combat 25 max, 0.1 sporadic item drop, item {item_drop_needed} max, {bonus_conditionals}, -tie, -equip kramco, -equip crystal ball, -equip I voted, -equip broken champagne bottle`, false);
+maximize(`333 familiar experience 10 min 10 max, 0.01 meat, combat 25 max, 0.1 sporadic item drop, item {item_drop_needed} max, {bonus_conditionals}, -tie, -equip kramco, -equip miniature crystal ball, -equip replica miniature crystal ball, -equip I voted, -equip broken champagne bottle`, false);
 /* } else {
   maximize(`item max {item_drop_needed}, {bonus_conditionals}, -tie, -equip kramco, -equip I voted`, false);
 }
